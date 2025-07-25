@@ -4,18 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arran Kloppers Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
+        body {
+            /* Subtle background pattern */
+            background: linear-gradient(135deg, #f4f4f4 80%, #e0e7ff 100%);
+            position: relative;
+        }
+        .profile-photo {
+            display: block;
+            margin: 0 0 1.5rem 0;
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            background: #ddd;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             background: #f4f4f4;
             color: #222;
+            padding-left: 3vw;
+            padding-right: 3vw;
         }
         header {
-            background: #222;
+            background: linear-gradient(90deg, #68217A 0%, #222 100%);
             color: #fff;
             padding: 2rem 0 1rem 0;
             text-align: center;
+            box-shadow: 0 4px 16px rgba(104,33,122,0.08);
         }
         nav {
             margin: 1rem 0;
@@ -25,14 +44,50 @@
             margin: 0 1rem;
             text-decoration: none;
             font-weight: bold;
+            position: relative;
+            transition: color 0.2s;
         }
+        nav a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #ae4bd5;
+            transition: width 0.3s;
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+        }
+        nav a:hover {
+            color: #ae4bd5;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+        
         section {
             max-width: 800px;
             margin: 2rem auto;
             background: #fff;
             padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(104,33,122,0.08);
+            opacity: 0;
+            transform: translateX(80px);
+            transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s, transform 0.3s;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        section:hover {
+            box-shadow: 0 8px 32px rgba(104,33,122,0.16);
+            transform: translateY(-4px) scale(1.01);
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateX(0);
         }
         h2 {
             color: #222;
@@ -47,16 +102,23 @@
             padding: 0;
         }
         .skills-list li {
-            background: #eee;
+            background: linear-gradient(90deg, #eee 60%, #e0e7ff 100%);
             padding: 0.5rem 1rem;
-            border-radius: 4px;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(104,33,122,0.04);
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .skills-list li:hover {
+            box-shadow: 0 4px 12px rgba(104,33,122,0.12);
+            transform: scale(1.05);
         }
         footer {
             text-align: center;
             padding: 1rem 0;
-            background: #222;
+            background: linear-gradient(90deg, #222 0%, #68217A 100%);
             color: #fff;
             margin-top: 2rem;
+            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -67,38 +129,79 @@
             <a href="#about">About Me</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
+            <a href="#hobbies">Hobbies</a>
             <a href="#contact">Contact</a>
+            <a href="#socials">Socials</a>
         </nav>
     </header>
     <main>
         <section id="about">
             <h2>About Me</h2>
-            <p>Hello! I'm Arran Kloppers, a passionate developer eager to showcase my work and skills. Welcome to my portfolio website!</p>
+            <img src="profile.jpg" alt="Arran Kloppers Photo" class="profile-photo" />
+            <p>Hello! I'm Arran Kloppers <br>
+            Welcome to my portfolio website!
+            I am a final year BSc Information Technology student at North-West University's Unit of Distance Learning, graduating in 2025.<br>
+            Ready to join a development team to expand my programming and teamwork skills. <br>
+            Interested in a career path that combines artificial intelligence (AI), computer science, and information management. <br> The BSc IT degree has provided me with a strong foundation in computer science, AI and machine learning, and designing and developing computerized systems. Additionally, it focused on information management, including data analysis and knowledge management.</p>
         </section>
         <section id="projects">
             <h2>Projects</h2>
             <ul>
-                <li><strong>Project 1:</strong> Description of your first project.</li>
-                <li><strong>Project 2:</strong> Description of your second project.</li>
-                <!-- Add more projects as needed -->
+                <li><strong>Mock Accomodation Booking System:</strong> I was responsable for the design of the initial data model and process model.
+                <br>(Private Repository) https://github.com/Herman26242/CMPG223_Group_2</li>
+                <li><strong>Mock concert booking website:</strong> I created a C# ASP.NET web application that allows for making bookings and adding and removing artists to the line-up of performers. </li>
+                
             </ul>
         </section>
         <section id="skills">
             <h2>Skills</h2>
             <ul class="skills-list">
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <!-- Add more skills as needed -->
+                <li><i class="fab fa-java" style="color:#007396;"></i> Java</li>
+                <li><i class="fab fa-python" style="color:#3776AB;"></i> Python</li>
+                <li><span style="vertical-align:middle; display:inline-block; width:1.2em; height:1.2em;"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="22" viewBox="0 0 48 48"><path fill="#6a1b9a" d="M36,5L17,21.5L7,14l-3,1.25v17.5L7,34l10-7.5L36,43l8-3V8L36,5z M8,20l5,4l-5,4V20z M24,24l10-7v14 L24,24z"></path></svg></span> C# (Visual Studio)</li>
+                <li><i class="fas fa-database" style="color:#00618A;"></i> SQL</li>
+                <li><i class="fas fa-database" style="color:#F80000;"></i> Oracle SQL Developer</li>
+                <li><i class="fas fa-database" style="color:#4DB33D;"></i> Databases</li>
+            </ul>
+        </section>
+        <section id="hobbies">
+            <h2>Hobbies</h2>
+            <ul>
+                <li>Building and painting Warhammer 40K miniatures</li>
+                <li>Staying up to date with tech news</li>
+                <li>Video games, a lot of video games</li>
+                <li>Sci-Fi enthusiast</li>
             </ul>
         </section>
         <section id="contact">
             <h2>Contact</h2>
-            <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+            <p>Email: <a href="mailto:lkloppers3@gmail.com">lkloppers3@gmail.com</a></p>
+        </section>
+        <section id="socials">
+            <h2>Socials</h2>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/arran-kloppers-1b0b3a1b6/" target="_blank">https://www.linkedin.com/in/arran-kloppers-1b0b3a1b6/</a></p>
+            <p>GitHub: <a href="https://github.com/ArranKloppers" target="_blank"> https://github.com/ArranKloppers</a></p>
         </section>
     </main>
     <footer>
         &copy; 2025 Arran Kloppers
     </footer>
+    <script>
+        
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('main section');
+        const observer = new window.IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    });
+    </script>
 </body>
 </html>
